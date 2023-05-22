@@ -1,4 +1,4 @@
-const reportedAcudits = [];
+const reportJokes = [];
 
 class reportedAcudit {
     constructor(acudit, score, date) {
@@ -11,6 +11,11 @@ class reportedAcudit {
 document.getElementById("botoAcudit").addEventListener('click', mostraAcudit)
 
 async function mostraAcudit() {
+
+    //mostrar botones puntuación
+    document.getElementById("botons")?.classList.add= "d-flex";
+    document.getElementById("botons")?.classList.remove= "ocultar";
+
     let config = {
         headers: {
             Accept: "application/json",
@@ -24,6 +29,8 @@ async function mostraAcudit() {
     var imagenUrl = "img/cuñaohead.png"
     document.getElementById("cunao").src = imagenUrl;
     document.getElementById("cunao").classList.add("shakeit");
+
+
 
     setTimeout(() => {
         document.getElementById("cunao").src = "img/smiley.png";
@@ -39,15 +46,15 @@ function puntuar(puntuacio) {
     const date = new Date();
     let ISOdate = date.toISOString();
 
-    let found = reportedAcudits.find(elemento => elemento.acudit == textAcudit);
+    let found = reportJokes.find(elemento => elemento.acudit == textAcudit);
     if (found) {
         return alert("Aquest acudit ja ha sigut valorat");
     }
 
     let nouAcudit = new reportedAcudit(textAcudit, score, date);
-    reportedAcudits.push(nouAcudit);
+    reportJokes.push(nouAcudit);
 
-    console.log(reportedAcudits);
+    console.log(reportJokes);
 
 }
 

@@ -34,7 +34,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var reportedAcudits = [];
+var reportJokes = [];
 var reportedAcudit = /** @class */ (function () {
     function reportedAcudit(acudit, score, date) {
         this.acudit = acudit;
@@ -80,11 +80,11 @@ function puntuar(puntuacio) {
     var score = puntuacio;
     var date = new Date();
     var ISOdate = date.toISOString();
-    var found = reportedAcudits.find(function (elemento) { return elemento.acudit == textAcudit; });
+    var found = reportJokes.find(function (elemento) { return elemento.acudit == textAcudit; });
     if (found) {
         return alert("Aquest acudit ja ha sigut valorat");
     }
     var nouAcudit = new reportedAcudit(textAcudit, score, date);
-    reportedAcudits.push(nouAcudit);
-    console.log(reportedAcudits);
+    reportJokes.push(nouAcudit);
+    console.log(reportJokes);
 }
