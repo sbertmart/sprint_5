@@ -43,12 +43,23 @@ var reportedAcudit = /** @class */ (function () {
     }
     return reportedAcudit;
 }());
-document.getElementById("botoAcudit").addEventListener('click', mostraAcudit);
+mostraTemps();
+document.getElementById("botoAcudit").addEventListener('click', acuditRandom);
+function acuditRandom() {
+    var rand = Boolean(Math.round(Math.random()));
+    if (rand == true) {
+        mostraAcudit();
+    }
+    if (rand == false) {
+        mostraAcudit2();
+    }
+}
 function mostraAcudit() {
+    var _a;
     return __awaiter(this, void 0, void 0, function () {
         var config, a, b, imagenUrl;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
+        return __generator(this, function (_b) {
+            switch (_b.label) {
                 case 0:
                     config = {
                         headers: {
@@ -57,14 +68,20 @@ function mostraAcudit() {
                     };
                     return [4 /*yield*/, fetch("https://icanhazdadjoke.com/", config)];
                 case 1:
-                    a = _a.sent();
+                    a = _b.sent();
                     return [4 /*yield*/, a.json()];
                 case 2:
-                    b = _a.sent();
+                    b = _b.sent();
                     document.getElementById("acudit").innerHTML = b.joke;
+                    // ocultar gracias por puntuar
+                    (_a = document.getElementById("gracies")) === null || _a === void 0 ? void 0 : _a.classList.add("oculto");
+                    //mostrar botones puntuación
+                    document.getElementById("botons").classList.add("d-block");
+                    document.getElementById("botons").classList.remove("ocultar");
                     imagenUrl = "img/cuñaohead.png";
                     document.getElementById("cunao").src = imagenUrl;
                     document.getElementById("cunao").classList.add("shakeit");
+                    //vuelve smiley    
                     setTimeout(function () {
                         document.getElementById("cunao").src = "img/smiley.png";
                         document.getElementById("cunao").classList.remove("shakeit");
@@ -75,7 +92,7 @@ function mostraAcudit() {
     });
 }
 function puntuar(puntuacio) {
-    var _a;
+    var _a, _b;
     var textAcudit = (_a = document.getElementById("acudit")) === null || _a === void 0 ? void 0 : _a.innerHTML;
     var score = puntuacio;
     var date = new Date();
@@ -86,5 +103,76 @@ function puntuar(puntuacio) {
     }
     var nouAcudit = new reportedAcudit(textAcudit, score, date);
     reportJokes.push(nouAcudit);
+    //mostrar gracies per puntuar
+    (_b = document.getElementById("gracies")) === null || _b === void 0 ? void 0 : _b.classList.remove("oculto");
+    //ocultar puntuacio
+    document.getElementById("botons").classList.remove("d-block");
+    document.getElementById("botons").classList.add("ocultar");
     console.log(reportJokes);
+}
+// API acudits 1
+function mostraAcudit2() {
+    var _a;
+    return __awaiter(this, void 0, void 0, function () {
+        var a, b, imagenUrl;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0: return [4 /*yield*/, fetch("https://api.chucknorris.io/jokes/random")];
+                case 1:
+                    a = _b.sent();
+                    return [4 /*yield*/, a.json()];
+                case 2:
+                    b = _b.sent();
+                    document.getElementById("acudit").innerHTML = b.value;
+                    // ocultar gracias por puntuar
+                    (_a = document.getElementById("gracies")) === null || _a === void 0 ? void 0 : _a.classList.add("oculto");
+                    //mostrar botones puntuación
+                    document.getElementById("botons").classList.add("d-block");
+                    document.getElementById("botons").classList.remove("ocultar");
+                    imagenUrl = "img/cuñaohead.png";
+                    document.getElementById("cunao").src = imagenUrl;
+                    document.getElementById("cunao").classList.add("shakeit");
+                    //vuelve smiley    
+                    setTimeout(function () {
+                        document.getElementById("cunao").src = "img/smiley.png";
+                        document.getElementById("cunao").classList.remove("shakeit");
+                    }, "3000");
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+// API temps
+function mostraTemps() {
+    return __awaiter(this, void 0, void 0, function () {
+        var APIKey, temps, dato, temperatura, tiempo, imgURL;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    APIKey = "c619c91872a2d9650b01d3f060cb3768";
+                    return [4 /*yield*/, fetch("https://api.openweathermap.org/data/2.5/weather?q=barcelona&appid=".concat(APIKey, "&units=metric&lang=ca"))];
+                case 1:
+                    temps = _a.sent();
+                    return [4 /*yield*/, temps.json()];
+                case 2:
+                    dato = _a.sent();
+                    console.log(dato);
+                    temperatura = dato.main.temp;
+                    tiempo = dato.weather[0].description;
+                    imgURL = getImg(tiempo);
+                    console.log(imgURL);
+                    document.getElementById("meteo").innerHTML = "La temperatura a Barcelona es de " + "<b>" + temperatura + "</b>" + " C°";
+                    document.getElementById("iconosmeteo").src = imgURL;
+                    console.log(temperatura + " " + tiempo);
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+function getImg(tiempo) {
+    var img;
+    if (tiempo == "nuvolositat variable" || tiempo == "núvols dispersos") {
+        img = "img/sol nuvol.png";
+    }
+    return img;
 }

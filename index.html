@@ -13,32 +13,44 @@
         <div class="container-fluid d-flex">
           <a class="navbar-brand col-5" href="#">Sprint 5</a>
           <div class="col-4 text-end" id="meteo">Info meteorològica</div>
-          <div class="col-1" id="iconosmeteo">Icones meteo</div>
+          <div class="col-1"><img id="iconosmeteo" src=""></div>
         </div>
       </nav>
     <div id="contingut" class="row d-flex">
-        <div class="col-3"></div>
-        <div id="app" class="text-center col-6 bg-primary">
-            <h2 id="titol">Vols un acudit de pare?</h2>
+        <div class="col-3 columnapetita1"></div>
+        <div id="app" class="text-center col-6 d-flex">
+            <div class="col-2">    
+            </div>
+            <div class="col-8">
+            <h2 id="titol">Vols un acudit?</h2>
             <p id="acudit" class="textacudit"></p>
             <img id="cunao" src="img/smiley.png" class="d-block text-center imagenrisas"></img>
           
             <div id="botons" class="ml-4 mr-4 pb-4 oculto">
-                <p class="col-12 textacudit text-center">El pots puntuar del 1 al 3?</p>
+                <p class="col-12 textacudit text-center">El pots puntuar?</p>
+                <div class="d-flex">
                 <div class="col-4">
-                    <button class="btn btn-info" id="puntuacio1" onclick="puntuar(1)">1</button>
+                    <button class="btn" id="puntuacio1" onclick="puntuar(1)"><img src="img/gota.png" style="text-align:center;"></button>
                 </div>
                 <div class="col-4">
-                    <button class="btn btn-info" id="puntuacio2" onclick="puntuar(2)">2</button>
+                    <button class="btn" id="puntuacio2" onclick="puntuar(2)"><img src="img/furioso.png" style="text-align:center;"></button>
                 </div>
                 <div class="col-4">
-                    <button class="btn btn-info" id="puntuacio3" onclick="puntuar(3)">3</button>
+                    <button class="btn" id="puntuacio3" onclick="puntuar(3)"><img src="img/caca.png" style="text-align:center;"></button>
                 </div>
+                </div> 
             </div>
+            <p id="gracies" class="col-12 textacudit text-center oculto">Gràcies per valorar l'acudit</p>
        
-            <button class="btn btn-secondary" id="botoAcudit">MOSTRA UN NOU ACUDIT</button>
+            <div id="ombraBotoacudit">
+            <button class="btn" id="botoAcudit">MOSTRA UN NOU ACUDIT</button>
+            </div>
+            </div>
+            <div class="col-2">
+
+            </div>
         </div>
-        <div class="col-3"></div>
+        <div class="col-3 columnapetita2"></div>
     </div>
 
     <script src="index.js">
