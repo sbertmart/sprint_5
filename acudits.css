@@ -47,6 +47,11 @@ background-repeat:no-repeat;
 
 }
 
+#meteo {
+  padding-left:2%;
+  padding-right:2%;
+}
+
 #ombraBotoacudit {
   border-radius:25px;
   background-color: #EDC951;
