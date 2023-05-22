@@ -161,7 +161,7 @@ function mostraTemps() {
                     tiempo = dato.weather[0].description;
                     imgURL = getImg(tiempo);
                     console.log(imgURL);
-                    document.getElementById("meteo").innerHTML = "La temperatura a Barcelona es de " + "<b>" + temperatura + "</b>" + " C°";
+                    document.getElementById("meteo").innerHTML = "<b>" + temperatura + "</b>" + " C°";
                     document.getElementById("iconosmeteo").src = imgURL;
                     console.log(temperatura + " " + tiempo);
                     return [2 /*return*/];
@@ -171,7 +171,7 @@ function mostraTemps() {
 }
 function getImg(tiempo) {
     var img;
-    if (tiempo == "nuvolositat variable" || tiempo == "núvols dispersos") {
+    if (tiempo == "nuvolositat variable" || tiempo == "núvols dispersos" || tiempo == "lleugerament ennuvolat") {
         img = "img/sol nuvol.png";
     }
     return img;

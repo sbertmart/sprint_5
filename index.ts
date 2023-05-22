@@ -133,7 +133,7 @@ async function mostraTemps() {
     let imgURL = getImg(tiempo);
     console.log(imgURL);
 
-    document.getElementById("meteo").innerHTML = "La temperatura a Barcelona es de " + "<b>"+temperatura+"</b>" + " C°";
+    document.getElementById("meteo").innerHTML = "<b>"+temperatura+"</b>" + " C°";
     document.getElementById("iconosmeteo").src = imgURL;
 
     console.log(temperatura + " " + tiempo);
@@ -143,7 +143,7 @@ async function mostraTemps() {
 function getImg(tiempo) {
 
     let img;
-    if (tiempo == "nuvolositat variable" || tiempo == "núvols dispersos") {        
+    if (tiempo == "nuvolositat variable" || tiempo == "núvols dispersos" || tiempo == "lleugerament ennuvolat") {        
         img = "img/sol nuvol.png";
     }
     return img;
